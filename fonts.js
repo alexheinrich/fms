@@ -171,7 +171,7 @@ Module['FS_createPath']('/resources', 'fonts', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/resources/fonts/Roboto-Regular.ttf", "start": 0, "end": 145348, "audio": 0}, {"filename": "/resources/fonts/MicrochipRegular-ExWg.ttf", "start": 145348, "end": 168788, "audio": 0}], "remote_package_size": 168788, "package_uuid": "80309562-7efd-4e68-a231-bd454fdb2c32"});
+   loadPackage({"files": [{"filename": "/resources/fonts/Roboto-Regular.ttf", "start": 0, "end": 145348, "audio": 0}, {"filename": "/resources/fonts/MicrochipRegular-ExWg.ttf", "start": 145348, "end": 168788, "audio": 0}], "remote_package_size": 168788, "package_uuid": "3e6c7c37-c027-4785-aded-0044be4d20c5"});
   
   })();
   
