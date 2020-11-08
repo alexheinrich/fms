@@ -37,7 +37,7 @@ fms::fms(const InstanceInfo& info)
     /* RESOURCE LOADING */
     pGraphics->LoadFont("Roboto-Regular", ROBOTO_FN);
     pGraphics->LoadFont("Logo", LOGO_FONT_FN);
-//    auto knobSVG = pGraphics->LoadSVG(BEFACO_TINYKNOB_FN); /* TASK_02 */
+    auto knobSVG = pGraphics->LoadSVG(BEFACO_TINYKNOB_FN); /* TASK_02 */
     auto sliderPotSVG = pGraphics->LoadSVG(BEFACO_SLIDEPOT_FN);
     auto sliderHandleSVG = pGraphics->LoadSVG(BEFACO_SLIDEPOTHANDLE_FN);
 
@@ -59,8 +59,6 @@ fms::fms(const InstanceInfo& info)
     /* ADD CONTROLS */
     
     // Background control, either a fixed color, gradient, svg or bitmap
-    // pGraphics->AttachPanelBackground(COLOR_LIGHT_GRAY); /* TASK_01 */
-    // pGraphics->AttachPanelBackground(IColor::LinearInterpolateBetween(GetRainbow(1), GetRainbow(2), 0.4));
     pGraphics->AttachPanelBackground(IPattern::CreateLinearGradient(bounds, EDirection::Vertical, {{COLOR_LIGHT_GRAY, 0.}, {COLOR_GREEN, 1.}}));
      
     // Group controls (background labels)
@@ -95,7 +93,7 @@ fms::fms(const InstanceInfo& info)
 
     /* TASK_03 -- insert some code here! */
     
-//    pGraphics->AttachControl(new ISVGKnobControl(masterArea.GetCentredInside(100), knobSVG, kParamGain)); /* TASK_02 */
+    pGraphics->AttachControl(new ISVGKnobControl(masterArea.GetCentredInside(100), knobSVG, kParamGain)); /* TASK_02 */
     
     // Keyboard
     pGraphics->AttachControl(new IVKeyboardControl(keyboardArea, 36, 64), kCtrlTagKeyboard);
@@ -113,14 +111,12 @@ void fms::ProcessBlock(sample** inputs, sample** outputs, int nFrames)
   mSynth.ProcessBlock(inputs, outputs, 0, 1, nFrames);
 
   /* TASK_02 */
-  /*
   const double gain = GetParam(kParamGain)->Value() / 100.; // TASK_04
  
   for (int s = 0; s < nFrames; s++)
   {
     outputs[0][s] *= gain;
   }
-  */
 
   // copy left hand channel audio to right hand channel
   memcpy(outputs[1], outputs[0], nFrames * sizeof(sample));
