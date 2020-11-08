@@ -50,6 +50,9 @@ fms::fms(const InstanceInfo& info)
     const IRECT column2 = controlsArea.GetGridCell(1, 1, 3).GetPadded(-10);
     const IRECT column3 = controlsArea.GetGridCell(2, 1, 3).GetPadded(-10);
     const IRECT masterArea = column3.FracRectVertical(0.75, true);
+    const IRECT masterLabelArea = masterArea.GetGridCell(0, 3, 1);
+    const IRECT masterControlArea = masterArea.GetGridCell(1, 3, 1);
+    const IRECT masterValuesArea = masterArea.GetGridCell(2, 3, 1);
     const IRECT logoArea = column3.FracRectVertical(0.25, false);
     const IRECT ampEG = column2.FracRectVertical(0.5, true);
     const IRECT ampEGLabelsArea = ampEG.GetGridCell(0, 3, 1);
@@ -78,6 +81,9 @@ fms::fms(const InstanceInfo& info)
     pGraphics->AttachControl(new ITextControl(ampEGLabelsArea.GetGridCell(1, 1, 4).GetFromBottom(20.f), "Decay"));
     pGraphics->AttachControl(new ITextControl(ampEGLabelsArea.GetGridCell(2, 1, 4).GetFromBottom(20.f), "Sustain"));
     pGraphics->AttachControl(new ITextControl(ampEGLabelsArea.GetGridCell(3, 1, 4).GetFromBottom(20.f), "Release"));
+
+    pGraphics->AttachControl(new ITextControl(masterLabelArea.GetGridCell(0, 1, 1), "Volume"));
+    pGraphics->AttachControl(new ICaptionControl(masterValuesArea.GetGridCell(0, 1, 1), kParamGain));
     
     pGraphics->AttachControl(new ISVGSliderControl(ampEGSlidersArea.GetGridCell(0, 1, 4), sliderHandleSVG, sliderPotSVG, kParamAmpAttack));
     pGraphics->AttachControl(new ISVGSliderControl(ampEGSlidersArea.GetGridCell(1, 1, 4), sliderHandleSVG, sliderPotSVG, kParamAmpDecay));
